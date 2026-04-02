@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Dark SaaS theme — always dark */
+    /* Page background: deep charcoal #0B0F14 */
+    --background: 0.115 0.012 240;
+    /* Off-white text: #E9EEF6 */
+    --foreground: 0.93 0.01 240;
+    /* Surface cards: #171C24 */
+    --card: 0.145 0.012 240;
+    --card-foreground: 0.93 0.01 240;
+    /* Popover: #1F2530 */
+    --popover: 0.175 0.013 240;
+    --popover-foreground: 0.93 0.01 240;
+    /* Primary: blue #2F80FF */
+    --primary: 0.58 0.2 252;
+    --primary-foreground: 0.98 0 0;
+    /* Secondary: dark slate #252C38 */
+    --secondary: 0.195 0.014 240;
+    --secondary-foreground: 0.93 0.01 240;
+    /* Muted: #252C38 */
+    --muted: 0.195 0.014 240;
+    --muted-foreground: 0.62 0.015 240;
+    /* Accent: slightly lighter slate */
+    --accent: 0.22 0.015 240;
+    --accent-foreground: 0.93 0.01 240;
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.98 0 0;
+    /* Borders: #202734 */
+    --border: 0.19 0.013 240;
+    --input: 0.19 0.013 240;
+    --ring: 0.58 0.2 252;
+    /* Success green: #31C56B */
+    --success: 0.68 0.18 148;
+    --success-bg: 0.22 0.055 148;
+    /* Charts */
+    --chart-1: 0.58 0.2 252;
+    --chart-2: 0.68 0.18 148;
+    --chart-3: 0.75 0.15 60;
+    --chart-4: 0.62 0.22 300;
+    --chart-5: 0.65 0.2 20;
+    /* Sidebar */
+    --sidebar: 0.1 0.012 240;
+    --sidebar-foreground: 0.93 0.01 240;
+    --sidebar-primary: 0.58 0.2 252;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.195 0.014 240;
+    --sidebar-accent-foreground: 0.93 0.01 240;
+    --sidebar-border: 0.19 0.013 240;
+    --sidebar-ring: 0.58 0.2 252;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Bricolage Grotesque", "Plus Jakarta Sans", system-ui,
+      sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--border));
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(var(--muted-foreground));
+}
+
+/* Gradient background */
+.bg-page-gradient {
+  background: linear-gradient(
+    135deg,
+    oklch(0.115 0.012 240) 0%,
+    oklch(0.135 0.014 245) 50%,
+    oklch(0.115 0.012 240) 100%
+  );
+  min-height: 100vh;
+}
+
+/* Blue glow for primary buttons */
+.btn-blue-glow {
+  box-shadow: 0 0 20px oklch(0.58 0.2 252 / 0.35);
+}
+.btn-blue-glow:hover {
+  box-shadow: 0 0 28px oklch(0.58 0.2 252 / 0.5);
+}
+
+/* Card hover */
+.number-card:hover {
+  border-color: oklch(0.58 0.2 252 / 0.4);
+  box-shadow: 0 4px 24px oklch(0.58 0.2 252 / 0.12);
+  transform: translateY(-2px);
+}
+.number-card {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
